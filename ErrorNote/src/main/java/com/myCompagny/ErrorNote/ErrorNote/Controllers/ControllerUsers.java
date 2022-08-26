@@ -27,6 +27,12 @@ public class ControllerUsers {
         return serviceUsers.lire();
     }
 
+    // Controller pour la méthode qui va permettre à l'utilisateur de modifier son compte;
+    @PutMapping("/update/{idUsers}") // pour une requête de type (PUT)
+    public Users update(@PathVariable Long idUsers, @RequestBody Users users){
+        return serviceUsers.modifier(idUsers, users);
+    }
+
     // Controller pour la méthode qui va supprimer l'utilisateur;
     @DeleteMapping("/delete/{idUsers}") // Pour une requête de type (Delete)
     public String delete(@PathVariable Long idUsers){

@@ -25,4 +25,19 @@ public class ServiceProblemeImpl implements ServiceProbleme{
     public List<Problemes> lire() { // On retourner repository.la méthode(findAll) pour afficher tous les problemes;
         return repositoryProblemes.findAll();
     }
+
+    @Override // Implemntation de la méthode qui va pour permettre de faire de recherches par mots clé;
+    public Object search(String motCle) {
+        // Vérifions si le mot clé est different de null;
+        if (motCle != null){
+            List<Problemes> problemes = repositoryProblemes.findAll(motCle);
+            System.out.println(problemes);
+            if (problemes.size() !=0 ){
+                return problemes;
+            }else {
+                return "Cet mots n'existe pas U+2757 ❗!";
+            }
+        }
+        return repositoryProblemes.findAll(); // on retourne repository.la méthode (findAll)
+    }
 }

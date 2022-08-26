@@ -28,10 +28,23 @@ public class ServiceUsersImpl implements ServiceUsers{
         return repositoryUsers.findAll();
     }
 
+    // Reservez pour l'Utilisateur;
+    @Override // implementation de la méthode qui va permettre à l'utilisateur de modifier son compte;
+    public Users modifier(Long idUsers, Users users) {
+        return repositoryUsers.findById(idUsers) // Cherchons par l'id;
+                .map(u->{ // si on trouve, on fait de mappage;
+                    u.setNom(users.getNom());
+                    u.setPrenom(users.getPrenom());
+                    u.setPassword(users.getPassword());
+                    u.setEmail(users.getEmail());
+                    return repositoryUsers.save(u);
+                }).orElseThrow(()-> new RuntimeException("Utilisateur non trouvé !"));
+    }
+
     // Reservez pour l'Admin;
     @Override // implementation de la méthode Supprimer;
     public String supprimer(Long idUsers) { // On repository. la (deleteById) pour supprimer l'utilisateur;
         repositoryUsers.deleteById(idUsers);
-        return "L'Utilisateur Supprimer !";
+        return "Utilisateur Supprimer U+2705✅ !";
     }
 }

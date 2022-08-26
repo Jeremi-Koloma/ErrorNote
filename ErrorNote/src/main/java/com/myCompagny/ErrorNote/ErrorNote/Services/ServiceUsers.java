@@ -15,6 +15,10 @@ public interface ServiceUsers {
     // Reservez pour l'Admin;
     List<Users> lire();
 
+    // Reservez pour l'Utilisateur;
+    // Une méthode qui va permettre à l'utilisateur de modifier son compte;
+    Users modifier(Long idUsers, Users users);
+
     // Une méthode qui va retourner un String pour Supprimer l'utilisateur; avec l'Id de l'utilisateur;
     // Reservez pour l'Admin;
     String supprimer(Long idUsers);
