@@ -29,7 +29,7 @@ public class Solutions {
     @JoinColumn(name = "idUsers") // Donner un Nom spécifique à notre Clé Etranger;
     private Users users;
 
-    // Cardinatlité entre Solutions et Problemes;
+    // Cardinatlité entre Solutions et Problemes;cc
     @ManyToOne
     @JoinColumn(name = "idProblemes")
     private Problemes problemes;

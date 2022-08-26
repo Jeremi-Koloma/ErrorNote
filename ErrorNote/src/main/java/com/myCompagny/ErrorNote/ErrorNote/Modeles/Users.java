@@ -25,6 +25,9 @@ public class Users {
     @Column(length = 50)
     private String prenom;
 
+    @Column(length = 100)
+    private String password;
+
     @Column(length = 70)
     private String email;
 
