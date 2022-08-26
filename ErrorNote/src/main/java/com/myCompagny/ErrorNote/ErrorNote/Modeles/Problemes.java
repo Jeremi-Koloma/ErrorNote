@@ -22,14 +22,12 @@ public class Problemes {
 
     private String technologies;
 
+    @Column(length = 12)
+    private String EtatProblemes;
+
     // Cardinatlité entre Problemes et Users;
     @ManyToOne
     @JoinColumn(name = "idUsers") // Donner un Nom spécifique à notre Clé Etranger;
     private Users users;
-
-    // Cardinatlité entre Problemes et EtatProbleme;
-    @ManyToOne
-    @JoinColumn(name = "idEtatProblemes") // Donner un Nom spécifique à notre Clé Etranger;
-    private EtatProblemes etatProblemes;
 
 }
