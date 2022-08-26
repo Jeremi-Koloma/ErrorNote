@@ -45,6 +45,6 @@ public class ServiceUsersImpl implements ServiceUsers{
     @Override // implementation de la méthode Supprimer;
     public String supprimer(Long idUsers) { // On repository. la (deleteById) pour supprimer l'utilisateur;
         repositoryUsers.deleteById(idUsers);
-        return "Utilisateur Supprimer U+2705✅ !";
+        return "Utilisateur Supprimer ✅ !";
     }
 }

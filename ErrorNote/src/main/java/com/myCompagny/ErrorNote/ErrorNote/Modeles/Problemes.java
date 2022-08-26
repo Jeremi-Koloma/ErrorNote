@@ -22,8 +22,7 @@ public class Problemes {
 
     private String technologies;
 
-    @Column(length = 12)
-    private String EtatProblemes;
+    private String etatProblemes;
 
     // Cardinatlité entre Problemes et Users;
     @ManyToOne

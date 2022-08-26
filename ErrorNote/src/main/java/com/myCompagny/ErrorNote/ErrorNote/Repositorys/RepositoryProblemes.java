@@ -8,8 +8,7 @@ import java.util.List;
 
 // Cette classe va etendre de l'interface JPA Repository avec <Entity name, Long>
 public interface RepositoryProblemes extends JpaRepository<Problemes, Long> {
-    @Query(value = "SELECT * FROM problemes WHERE problemes.titre_problemes LIKE %?1%"
-            + "OR problemes.description_problemes LIKE %?1%",nativeQuery = true)
     // On retourne une liste de probleme avec le mot clé;
+    @Query(value = "SELECT * FROM problemes WHERE problemes.titre_problemes LIKE %?1% " + " OR problemes.description_problemes LIKE %?1%",nativeQuery = true)
     List<Problemes> findAll(String motCle);
 }
