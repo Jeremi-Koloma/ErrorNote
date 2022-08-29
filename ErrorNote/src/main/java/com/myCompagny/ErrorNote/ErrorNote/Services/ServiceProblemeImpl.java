@@ -35,7 +35,7 @@ public class ServiceProblemeImpl implements ServiceProbleme{
             if (problemes.size() !=0 ){
                 return problemes;
             }else {
-                return "Cet mots n'existe pas ❌!";
+                return "Cet mots n'existe pas !";
             }
         }
         return repositoryProblemes.findAll(); // on retourne repository.la méthode (findAll)

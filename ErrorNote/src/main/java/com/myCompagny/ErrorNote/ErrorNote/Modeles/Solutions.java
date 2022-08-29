@@ -24,11 +24,6 @@ public class Solutions {
 
     private String estimation;
 
-    // Cardinatlité entre Solutions et Users;
-    @ManyToOne
-    @JoinColumn(name = "idUsers") // Donner un Nom spécifique à notre Clé Etranger;
-    private Users users;
-
     // Cardinatlité entre Solutions et Problemes;cc
     @ManyToOne
     @JoinColumn(name = "idProblemes")
