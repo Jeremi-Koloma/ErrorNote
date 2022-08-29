@@ -15,10 +15,11 @@ public class ErrorNoteAppApplication implements CommandLineRunner {
 		SpringApplication.run(ErrorNoteAppApplication.class, args);
 	}
 
-	@Override // implementation de la méthode
+	@Override // implementation de la fonction profil;
 	public void run(String... args) throws Exception {
-		if(repositoryProfil.findAll().size()==0)
-		repositoryProfil.insererProfil();
-		else repositoryProfil.findAll();
+		// Vérifions si la table profil est vide;
+		if(repositoryProfil.findAll().size()==0){
+			repositoryProfil.insererProfil();
+		}
 	}
 }

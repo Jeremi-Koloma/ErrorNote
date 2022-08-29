@@ -1,5 +1,6 @@
 package com.myCompagny.ErrorNote.ErrorNote.Services;
 
+import com.myCompagny.ErrorNote.ErrorNote.Modeles.Profil;
 import com.myCompagny.ErrorNote.ErrorNote.Modeles.Users;
 import com.myCompagny.ErrorNote.ErrorNote.Repositorys.RepositoryUsers;
 import lombok.AllArgsConstructor;
@@ -19,6 +20,7 @@ public class ServiceUsersImpl implements ServiceUsers{
     // Implementation de la méthode Créer l'utilisateur;
     @Override
     public Users creer(Users users) { // On retourne repository.la méthode (SAVE) pour la persistence des donnée dans la base de donéé;
+       users.setProfil(new Profil(2)); // Redirection de user comme utilisateur;
         return repositoryUsers.save(users);
     }
 
