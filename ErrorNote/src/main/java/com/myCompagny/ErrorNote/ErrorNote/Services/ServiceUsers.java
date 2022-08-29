@@ -8,8 +8,8 @@ public interface ServiceUsers {
     // On créer nos 03 méthodes de l'utilisateurs Les méthodes (CRD);
 
     // Reserver pour l'Admin et l'Utilisateur;
-    // Une méthode qui va retournner un l'utilisateur;
-    Users creer (Users users);
+    // Une méthode qui va retournner un Objet d'utilisateur;
+    Object creer (Users users);
 
     // Une méthode qui va retourner une liste d'utilisateurs
     // Reservez pour l'Admin;
@@ -23,5 +23,4 @@ public interface ServiceUsers {
     // Reservez pour l'Admin;
     String supprimer(Long idUsers);
 
-    //
 }

@@ -21,7 +21,7 @@ public class ControllerUsers {
     // public EntityName, le nom de la méthode, puis (EntityName, aleas)
     @ApiOperation(value = "Ajouter un l'utilisateur")
     @PostMapping("/create") // pour une requête de type (POST);
-    public Users create(@RequestBody Users users){ // @RequestBoby pour pouvoir envoyer les donnée de boby de postman dans la base de donnée;
+    public Object create(@RequestBody Users users){ // @RequestBoby pour pouvoir envoyer les donnée de boby de postman dans la base de donnée;
         return serviceUsers.creer(users); // on retourne service.la méthode(creer)depuis serviceUsers pour créer l'utilisateur;
     }
 

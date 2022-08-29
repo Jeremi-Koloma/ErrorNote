@@ -11,7 +11,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "PROFIL")
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class Profil {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)

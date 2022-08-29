@@ -19,9 +19,15 @@ public class ServiceUsersImpl implements ServiceUsers{
 
     // Implementation de la méthode Créer l'utilisateur;
     @Override
-    public Users creer(Users users) { // On retourne repository.la méthode (SAVE) pour la persistence des donnée dans la base de donéé;
+    public Object creer(Users users) { // On retourne repository.la méthode (SAVE) pour la persistence des donnée dans la base de donéé;
        users.setProfil(new Profil(2)); // Redirection de user comme utilisateur;
-        return repositoryUsers.save(users);
+        // Vérifier si le mots de passe sont conforme;
+        if (users.getPassword().equals(users.getPwdConfirm())){
+            return repositoryUsers.save(users);
+        } else {
+            return "Mots de passe non conforme !";
+        }
+
     }
 
     // Reservez pour l'Admin;

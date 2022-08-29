@@ -25,6 +25,9 @@ public class Users {
     @Column(length = 100)
     private String password;
 
+    @Transient // Ignorer cet champs dans la base de donné;
+    private String pwdConfirm;
+
     @Column(length = 70)
     private String email;
 
