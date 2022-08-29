@@ -23,9 +23,5 @@ public class Solutions {
     private String ressources;
 
     private String estimation;
-
-    // Cardinatlité entre Solutions et Problemes;cc
-    @ManyToOne
-    @JoinColumn(name = "idProblemes")
-    private Problemes problemes;
+    
 }

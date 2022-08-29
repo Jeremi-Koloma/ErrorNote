@@ -16,9 +16,6 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Générez notre PRIMARY Key - Auto-Incrementation;
     private Long idUsers;
 
-    @Column(length = 20)
-    private String profil;
-
     @Column(length = 50)
     private String nom;
 
@@ -33,5 +30,9 @@ public class Users {
 
     @Column(length = 30)
     private String numero;
+
+    @ManyToOne
+    @JoinColumn(name = "idProfil")
+    private Profil profil;
 
 }
