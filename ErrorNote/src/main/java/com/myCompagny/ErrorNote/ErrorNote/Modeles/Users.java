@@ -28,7 +28,7 @@ public class Users {
     @Transient // Ignorer cet champs dans la base de donné;
     private String pwdConfirm;
 
-    @Column(length = 70)
+    @Column(unique = true) // émail unique;
     private String email;
 
     @Column(length = 30)

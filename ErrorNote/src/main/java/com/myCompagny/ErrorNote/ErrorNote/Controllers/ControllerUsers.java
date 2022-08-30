@@ -5,6 +5,7 @@ import com.myCompagny.ErrorNote.ErrorNote.Services.ServiceUsers;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +23,12 @@ public class ControllerUsers {
     @ApiOperation(value = "Ajouter un l'utilisateur")
     @PostMapping("/create") // pour une requête de type (POST);
     public Object create(@RequestBody Users users){ // @RequestBoby pour pouvoir envoyer les donnée de boby de postman dans la base de donnée;
-        return serviceUsers.creer(users); // on retourne service.la méthode(creer)depuis serviceUsers pour créer l'utilisateur;
+        try {
+            return serviceUsers.creer(users); // on retourne service.la méthode(creer)depuis serviceUsers pour créer l'utilisateur;
+        }catch (DataIntegrityViolationException e){ // l'email est unique;
+            return "Cet e-mail exite déja !";
+        }
+
     }
 
     // Controller pour la méthode qui va Afficher tous les utilisateurs;

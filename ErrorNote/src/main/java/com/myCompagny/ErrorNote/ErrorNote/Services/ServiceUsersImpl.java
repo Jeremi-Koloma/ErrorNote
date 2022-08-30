@@ -4,6 +4,9 @@ import com.myCompagny.ErrorNote.ErrorNote.Modeles.Profil;
 import com.myCompagny.ErrorNote.ErrorNote.Modeles.Users;
 import com.myCompagny.ErrorNote.ErrorNote.Repositorys.RepositoryUsers;
 import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,13 +20,20 @@ public class ServiceUsersImpl implements ServiceUsers{
     // Injectons notre RepositoryUsers;
     private final RepositoryUsers repositoryUsers;
 
+    // Une fonction Criptage de mots de passe;
+    @Bean
+    PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
     // Implementation de la méthode Créer l'utilisateur;
     @Override
     public Object creer(Users users) { // On retourne repository.la méthode (SAVE) pour la persistence des donnée dans la base de donéé;
        users.setProfil(new Profil(2)); // Redirection de user comme utilisateur;
         // Vérifier si le mots de passe sont conforme;
         if (users.getPassword().equals(users.getPwdConfirm())){
-            return repositoryUsers.save(users);
+            users.setPassword(passwordEncoder().encode(users.getPassword())); // Crypter le password;
+            repositoryUsers.save(users);
+            return "Compte Créer avec Succès ! " + users.getPrenom();
         } else {
             return "Mots de passe non conforme !";
         }
