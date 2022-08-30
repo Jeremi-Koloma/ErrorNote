@@ -15,6 +15,13 @@ public interface ServiceProbleme {
     // Reserver pour l'Admin et le Visiteurs;
     List<Problemes> lire();
 
+    // Suppression d'un problème;
+    String supprimer(Long idProblemes);
+
     // La méthode qui va nous permetre de faire des recherches par mot clé
     Object search(String motCle);
+
+    // la méthode qui permet de trouver un probleme par id;
+    Problemes trouverProblemeParId(Long idProblemes);
+
 }

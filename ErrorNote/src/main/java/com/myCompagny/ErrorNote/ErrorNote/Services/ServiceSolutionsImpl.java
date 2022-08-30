@@ -1,5 +1,6 @@
 package com.myCompagny.ErrorNote.ErrorNote.Services;
 
+import com.myCompagny.ErrorNote.ErrorNote.Modeles.Problemes;
 import com.myCompagny.ErrorNote.ErrorNote.Modeles.Solutions;
 import com.myCompagny.ErrorNote.ErrorNote.Repositorys.RepositorySolutions;
 import lombok.AllArgsConstructor;
@@ -25,4 +26,10 @@ public class ServiceSolutionsImpl implements ServiceSolutions{
     public List<Solutions> lire() { // on retourne la méthode repository.la méthode(findAll) pour afficher touteqs les solutions;
         return repositorySolutions.findAll();
     }
+
+    @Override // Implementation de la méthode qui permet de donner une solution par Probleme;
+    public Solutions donnerSolutionParProbleme(Problemes problemes) {
+        return repositorySolutions.findByProblemes(problemes);
+    }
+
 }

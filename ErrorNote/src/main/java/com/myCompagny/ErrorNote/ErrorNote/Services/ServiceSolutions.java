@@ -1,5 +1,6 @@
 package com.myCompagny.ErrorNote.ErrorNote.Services;
 
+import com.myCompagny.ErrorNote.ErrorNote.Modeles.Problemes;
 import com.myCompagny.ErrorNote.ErrorNote.Modeles.Solutions;
 
 import java.util.List;
@@ -14,4 +15,8 @@ public interface ServiceSolutions {
     // Reserver pour l'Admin et le Visiteurs;
     // Une méthode qui va retourner une liste des Solutions trouvées;
     List<Solutions> lire();
+
+    // Donner une solution par probleme;
+    Solutions donnerSolutionParProbleme(Problemes problemes);
+
 }

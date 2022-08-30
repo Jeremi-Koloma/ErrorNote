@@ -26,6 +26,12 @@ public class ServiceProblemeImpl implements ServiceProbleme{
         return repositoryProblemes.findAll();
     }
 
+    @Override // Implementation de la méthode qui va nous permettre de supprimer un probleme;
+    public String supprimer(Long idProblemes) {
+        repositoryProblemes.deleteById(idProblemes);
+        return "Problème Supprimer !";
+    }
+
     @Override // Implemntation de la méthode qui va pour permettre de faire de recherches par mots clé;
     public Object search(String motCle) {
         // Vérifions si le mot clé est different de null;
@@ -40,4 +46,10 @@ public class ServiceProblemeImpl implements ServiceProbleme{
         }
         return repositoryProblemes.findAll(); // on retourne repository.la méthode (findAll)
     }
+
+    @Override // Implementation de la méthode qui permet de trouver un probleme par id;
+    public Problemes trouverProblemeParId(Long idProblemes) {
+        return repositoryProblemes.findById(idProblemes).get();
+    }
+
 }

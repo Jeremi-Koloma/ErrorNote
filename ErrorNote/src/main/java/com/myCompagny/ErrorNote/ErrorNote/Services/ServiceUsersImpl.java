@@ -74,7 +74,7 @@ public class ServiceUsersImpl implements ServiceUsers{
         if (passwordEncoder().matches(password, newUser.getPassword())){
             return "Nom: " + newUser.getNom()+ "" +"\nPrénom: " +newUser.getPrenom() + "\nEmail: " +newUser.getEmail();
         }else {
-            return "Mots de passe incorrect !";
+            return "Mots de passe ou e-mail incorrect !";
         }
     }
 

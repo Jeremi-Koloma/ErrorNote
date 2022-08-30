@@ -23,5 +23,8 @@ public class Solutions {
     private String ressources;
 
     private String estimation;
-    
+
+    @OneToOne
+    @JoinColumn(name = "idProblemes")
+    private Problemes problemes;
 }
