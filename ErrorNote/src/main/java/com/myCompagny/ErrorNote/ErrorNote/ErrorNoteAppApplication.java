@@ -8,14 +8,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @AllArgsConstructor // constructeur avec tous les arguments pour l'injections de notre repositoryProfil;
 @SpringBootApplication
-// CommandLineRunner // pour Insertion Automatique des données;
+// CommandLineRunner // pour Insertion Automatique des données lors de démarrage de l'App;
 public class ErrorNoteAppApplication implements CommandLineRunner {
 	private final RepositoryProfil repositoryProfil;
 	public static void main(String[] args) {
 		SpringApplication.run(ErrorNoteAppApplication.class, args);
 	}
 
-	@Override // implementation de la fonction profil;
+	@Override // implementation de CommandLineRunner;
 	public void run(String... args) throws Exception {
 		// Vérifions si la table profil est vide;
 		if(repositoryProfil.findAll().size()==0){

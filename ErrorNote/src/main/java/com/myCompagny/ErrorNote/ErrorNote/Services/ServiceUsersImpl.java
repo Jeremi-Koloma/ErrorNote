@@ -55,6 +55,7 @@ public class ServiceUsersImpl implements ServiceUsers{
                     u.setPrenom(users.getPrenom());
                     u.setPassword(users.getPassword());
                     u.setEmail(users.getEmail());
+                    u.setNumero(users.getNumero());
                     return repositoryUsers.save(u);
                 }).orElseThrow(()-> new RuntimeException("Utilisateur non trouvé !"));
     }
@@ -64,6 +65,17 @@ public class ServiceUsersImpl implements ServiceUsers{
     public String supprimer(Long idUsers) { // On repository. la (deleteById) pour supprimer l'utilisateur;
         repositoryUsers.deleteById(idUsers);
         return "Utilisateur Supprimer ✅ !";
+    }
+
+    @Override // implementation de la méthode se loger;
+    public Object login(String password, String email) {
+        Users newUser = repositoryUsers.findByEmail(email);
+        // faire une correspondance de mots de passe;
+        if (passwordEncoder().matches(password, newUser.getPassword())){
+            return "Nom: " + newUser.getNom()+ "" +"\nPrénom: " +newUser.getPrenom() + "\nEmail: " +newUser.getEmail();
+        }else {
+            return "Mots de passe incorrect !";
+        }
     }
 
 

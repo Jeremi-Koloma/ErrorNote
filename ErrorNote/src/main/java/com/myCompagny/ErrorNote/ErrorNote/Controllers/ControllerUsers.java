@@ -6,6 +6,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,6 +30,17 @@ public class ControllerUsers {
             return "Cet e-mail exite déja !";
         }
 
+    }
+
+    // Controller se Loger à son compte;
+    @ApiOperation(value = "Se Connecter")
+    @GetMapping("/login")
+    public Object loger(@Param("email") String email, @Param("password") String password){
+        try {
+            return  serviceUsers.login(password, email);
+        }catch (NullPointerException e){
+            return "Cet Compte n'existe pas !";
+        }
     }
 
     // Controller pour la méthode qui va Afficher tous les utilisateurs;

@@ -23,4 +23,7 @@ public interface ServiceUsers {
     // Reservez pour l'Admin;
     String supprimer(Long idUsers);
 
+    // pour se loger;
+    Object login(String password, String email);
+
 }
