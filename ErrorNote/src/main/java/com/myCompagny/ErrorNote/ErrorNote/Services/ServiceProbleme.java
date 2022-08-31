@@ -18,6 +18,9 @@ public interface ServiceProbleme {
     // Suppression d'un problème;
     String supprimer(Long idProblemes);
 
+    // Modifier un probleme;
+    Problemes modifier(Long idProblems, Problemes problemes);
+
     // La méthode qui va nous permetre de faire des recherches par mot clé
     Object search(String motCle);
 

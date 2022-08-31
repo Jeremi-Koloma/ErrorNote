@@ -32,6 +32,18 @@ public class ServiceProblemeImpl implements ServiceProbleme{
         return "Problème Supprimer !";
     }
 
+    @Override // Implementation de la méthode qui permeet de modifier un problème;
+    public Problemes modifier(Long idProblems, Problemes problemes) {
+        return repositoryProblemes.findById(idProblems)
+                .map(p->{
+                    p.setTitreProblemes(problemes.getTitreProblemes());
+                    p.setDescriptionProblemes(problemes.getDescriptionProblemes());
+                    p.setTechnologies(problemes.getTechnologies());
+                    p.setEtatProblemes(problemes.getEtatProblemes());
+                    return repositoryProblemes.save(p);
+                }).orElseThrow(()-> new RuntimeException("Problème non trouvé !"));
+    }
+
     @Override // Implemntation de la méthode qui va pour permettre de faire de recherches par mots clé;
     public Object search(String motCle) {
         // Vérifions si le mot clé est different de null;

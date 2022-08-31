@@ -38,4 +38,19 @@ public class ControllerProbleme {
         System.out.println(motCle);
         return serviceProbleme.search(motCle);
     }
+
+    // Controller qui va nous permettre de Modifier un probleme;
+    @ApiOperation(value = "Modifier un Problème")
+    @PutMapping("/update/{idProblemes}")
+    public Problemes update(@PathVariable Long idProblemes, @RequestBody Problemes problemes){
+        return serviceProbleme.modifier(idProblemes, problemes);
+    }
+
+    // Controller qui va nous permettre de supprimer un probleme;
+    @ApiOperation(value = "Supprimer un Problème")
+    @DeleteMapping("/delete/{idProblemes}")
+    public String delete(@PathVariable Long idProblemes){
+        return serviceProbleme.supprimer(idProblemes);
+    }
+
 }
