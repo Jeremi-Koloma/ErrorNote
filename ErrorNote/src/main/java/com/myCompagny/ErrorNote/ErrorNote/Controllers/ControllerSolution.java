@@ -53,6 +53,13 @@ public class ControllerSolution {
         return serviceSolutions.lire();
     }
 
+    // Controller qui va afficher une seule Solution;
+    @ApiOperation(value = "Afficher une Seule Solution")
+    @GetMapping("/oneSolution/{idPoblemes}")
+    public Object solution(@PathVariable Long idPoblemes){
+        return serviceSolutions.solution(idPoblemes);
+    }
+
     // Controller qui va nous permettre de modifier une solution;
     @ApiOperation(value = "Modifier une Solution")
     @PutMapping("/update/{idSolutions}")

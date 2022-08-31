@@ -25,4 +25,7 @@ public interface ServiceSolutions {
     // Donner une solution par probleme;
     Solutions donnerSolutionParProbleme(Problemes problemes);
 
+    //
+    Object solution(Long idSolutions);
+
 }

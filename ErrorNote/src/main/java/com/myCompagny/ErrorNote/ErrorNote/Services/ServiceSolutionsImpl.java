@@ -51,4 +51,28 @@ public class ServiceSolutionsImpl implements ServiceSolutions{
         return repositorySolutions.findByProblemes(problemes);
     }
 
+    @Override // Implementation de la méthode
+    public Object solution(Long idPoblemes) {
+        //
+        Solutions solutions = repositorySolutions.solution(idPoblemes);
+        // Vérifions si la Solution est null;
+        if (solutions == null){
+            return "Pas de solution relative à ce problème !";
+        }else { // Sinon si c'est pas null;
+            return
+                    "Nom : " + solutions.getProblemes().getUsers().getNom()+
+                    "\nPrénom : " + solutions.getProblemes().getUsers().getPrenom()+
+                    "\nContact : " + solutions.getProblemes().getUsers().getNumero()+
+                    "\nTitre du Problème : " + solutions.getProblemes().getTitreProblemes()+
+                    "\nDescription du Problème : " + solutions.getProblemes().getDescriptionProblemes()+
+                    "\nTechnologie : " + solutions.getProblemes().getTechnologies()+
+                    "\nEtat du problème : " + solutions.getProblemes().getEtatProblemes()+
+                    "\nSolution du Problème : " + solutions.getSolutions()+
+                    "\nDescription du Solution : " + solutions.getDescriptionSolutions()+
+                    "\nRessources : " + solutions.getRessources()+
+                    "\nMéthodologie de Recherches : " + solutions.getMethodologieRecherche()+
+                    "\nTemps passer sur le Problème : " + solutions.getEstimation();
+        }
+    }
+
 }
