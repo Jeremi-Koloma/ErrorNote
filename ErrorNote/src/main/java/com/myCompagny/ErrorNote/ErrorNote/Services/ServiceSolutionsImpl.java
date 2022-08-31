@@ -51,7 +51,7 @@ public class ServiceSolutionsImpl implements ServiceSolutions{
         return repositorySolutions.findByProblemes(problemes);
     }
 
-    @Override // Implementation de la méthode
+    @Override // Implementation de la méthode qui permet d'afficher une seule solution, son probleme, ses commentaires;
     public Object solution(Long idPoblemes) {
         //
         Solutions solutions = repositorySolutions.solution(idPoblemes);

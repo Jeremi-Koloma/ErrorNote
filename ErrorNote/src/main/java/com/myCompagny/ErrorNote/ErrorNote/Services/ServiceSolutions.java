@@ -25,7 +25,7 @@ public interface ServiceSolutions {
     // Donner une solution par probleme;
     Solutions donnerSolutionParProbleme(Problemes problemes);
 
-    //
+    // Une méthode qui permet d'afficher une seule solution, son probleme, et tous ses commentaires;
     Object solution(Long idSolutions);
 
 }
