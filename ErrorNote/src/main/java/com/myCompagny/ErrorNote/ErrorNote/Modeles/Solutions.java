@@ -22,6 +22,8 @@ public class Solutions {
 
     private String ressources;
 
+    private String methodologieRecherche;
+
     private String estimation;
 
     @OneToOne

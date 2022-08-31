@@ -27,6 +27,25 @@ public class ServiceSolutionsImpl implements ServiceSolutions{
         return repositorySolutions.findAll();
     }
 
+    @Override // Implementation de la méthode qui va nous permettre de modifier une solution;
+    public Solutions modifier(Long idSolutions, Solutions solutions) {
+        return repositorySolutions.findById(idSolutions) // Cherchons par id;
+                .map(s->{
+                    s.setSolutions(solutions.getSolutions());
+                    s.setDescriptionSolutions(solutions.getSolutions());
+                    s.setRessources(solutions.getRessources());
+                    s.setMethodologieRecherche(solutions.getMethodologieRecherche());
+                    s.setEstimation(solutions.getEstimation());
+                    return repositorySolutions.save(s); // Après les modificiatins, on l'enregistre;
+                }).orElseThrow(()-> new RuntimeException("Solution non trouvé !"));
+    }
+
+    @Override // Implementation de la méthode qui va nous permettre de supprimer une solution;
+    public String supprimer(Long idSolutions) {
+        repositorySolutions.findById(idSolutions);
+        return "Solution Supprimer !";
+    }
+
     @Override // Implementation de la méthode qui permet de donner une solution par Probleme;
     public Solutions donnerSolutionParProbleme(Problemes problemes) {
         return repositorySolutions.findByProblemes(problemes);

@@ -16,6 +16,12 @@ public interface ServiceSolutions {
     // Une méthode qui va retourner une liste des Solutions trouvées;
     List<Solutions> lire();
 
+    // méthode qui va modifier une Solution;
+    Solutions modifier(Long idSolutions, Solutions solutions);
+
+    // Une méthode qui va Supprimer une Solutions
+    String supprimer(Long idSolutions);
+
     // Donner une solution par probleme;
     Solutions donnerSolutionParProbleme(Problemes problemes);
 

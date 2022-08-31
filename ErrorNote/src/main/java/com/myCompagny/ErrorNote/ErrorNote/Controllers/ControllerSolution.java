@@ -33,6 +33,7 @@ public class ControllerSolution {
             if (problemes != null){
                 // Vérifier si la solution n'existe pas, on l'ajoute;
                 if (solutions1 == null){
+                    solutions.setProblemes(problemes); // On mets le probleme dans solution avant de créer;
                     serviceSolutions.creer(solutions);
                     return "Solution ajoutée avec succes !";
                 }else {
@@ -51,4 +52,21 @@ public class ControllerSolution {
     public List<Solutions> read(){
         return serviceSolutions.lire();
     }
+
+    // Controller qui va nous permettre de modifier une solution;
+    @ApiOperation(value = "Modifier une Solution")
+    @PutMapping("/update/{idSolutions}")
+    public Solutions update(@PathVariable Long idSolutions, @RequestBody Solutions solutions){
+        return serviceSolutions.modifier(idSolutions, solutions);
+    }
+
+    // Controller qui va nous permettre de Supprimer une solution;
+    @ApiOperation(value = "Supprimer une Solution")
+    @DeleteMapping("/delete/{idSolutions}")
+    public String delete(@PathVariable Long idSolutions){
+        return serviceSolutions.supprimer(idSolutions);
+    }
+
+
+
 }
