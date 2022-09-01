@@ -14,7 +14,7 @@ public interface ServiceSolutions {
 
     // Reserver pour l'Admin et le Visiteurs;
     // Une méthode qui va retourner une liste des Solutions trouvées;
-   // List<Solutions> lire();
+    List<Solutions> lire();
 
     // méthode qui va modifier une Solution;
     Solutions modifier(Long idSolutions, Solutions solutions);
@@ -27,7 +27,5 @@ public interface ServiceSolutions {
 
     // Une méthode qui permet d'afficher une seule solution, son probleme, et tous ses commentaires;
     Object solution(Long idSolutions);
-
-    List<Solutions> lire();
 
 }
