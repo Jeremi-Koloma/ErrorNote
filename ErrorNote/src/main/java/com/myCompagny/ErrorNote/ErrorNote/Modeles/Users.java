@@ -38,4 +38,24 @@ public class Users {
     @JoinColumn(name = "idProfil")
     private Profil profil;
 
+    public Users(String nom, String prenom, String password, String pwdConfirm, String email, String numero) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.password = password;
+        this.pwdConfirm = pwdConfirm;
+        this.email = email;
+        this.numero = numero;
+        this.profil = profil;
+    }
+
+    public Users(Long idUsers, String nom, String prenom, String password, String pwdConfirm, String email, String numero) {
+        this.idUsers = idUsers;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.password = password;
+        this.pwdConfirm = pwdConfirm;
+        this.email = email;
+        this.numero = numero;
+        this.profil = profil;
+    }
 }

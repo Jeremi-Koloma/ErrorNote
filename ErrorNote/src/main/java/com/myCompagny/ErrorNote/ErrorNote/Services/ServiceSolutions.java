@@ -10,7 +10,7 @@ public interface ServiceSolutions {
 
     // Reserver pour l'Admin et l'Utilisateur;
     // Une méthode qui va retourner une Solution pour la créer;
-    Solutions creer (Solutions solutions);
+    Object creer (Solutions solutions,String mail,String mot2passe);
 
     // Reserver pour l'Admin et le Visiteurs;
     // Une méthode qui va retourner une liste des Solutions trouvées;

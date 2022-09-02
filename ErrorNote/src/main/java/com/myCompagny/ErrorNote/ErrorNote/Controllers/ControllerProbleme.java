@@ -19,9 +19,9 @@ public class ControllerProbleme {
 
     // Controllers qui va nous permettre creer un probleme;
     @ApiOperation(value = "Ajouter un problème")
-    @PostMapping("/create")
-    public Problemes create(@RequestBody Problemes problemes){
-        return serviceProbleme.creer(problemes);
+    @PostMapping("/create/{n}/{p}")
+    public Object create(@RequestBody Problemes problemes,@PathVariable String n,@PathVariable String p){
+        return serviceProbleme.creer(problemes,n,p);
     }
 
     // Controllers qui va nous permettre de d'afficher tous les problemes;

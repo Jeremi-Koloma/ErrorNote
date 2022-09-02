@@ -1,6 +1,7 @@
 package com.myCompagny.ErrorNote.ErrorNote;
 
 import com.myCompagny.ErrorNote.ErrorNote.Repositorys.RepositoryProfil;
+import com.myCompagny.ErrorNote.ErrorNote.Repositorys.RepositoryUsers;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 // CommandLineRunner // pour Insertion Automatique des données lors de démarrage de l'App;
 public class ErrorNoteAppApplication implements CommandLineRunner {
 	private final RepositoryProfil repositoryProfil;
+	private final RepositoryUsers repositoryUsers;
 	public static void main(String[] args) {
 		SpringApplication.run(ErrorNoteAppApplication.class, args);
 	}
@@ -20,6 +22,13 @@ public class ErrorNoteAppApplication implements CommandLineRunner {
 		// Vérifions si la table profil est vide;
 		if(repositoryProfil.findAll().size()==0){
 			repositoryProfil.insererProfil();
+			repositoryUsers.insertadmin();
 		}
+
+
+
+
+
+
 	}
 }

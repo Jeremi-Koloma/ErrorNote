@@ -23,10 +23,13 @@ public class ControllerSolution {
 
     // Controller qui va créer une solution;
     @ApiOperation(value = "Créer une Solution")
-    @PostMapping("/create/{idProblemes}")
-    public String create(@RequestBody Solutions solutions, @PathVariable Long idProblemes){
+    @PostMapping("/create/{idProblemes}/{email}/{mot}")
+    public Object create(@RequestBody Solutions solutions, @PathVariable Long idProblemes,@PathVariable String email,@PathVariable String mot){
+        Problemes problemes = serviceProbleme.trouverProblemeParId(idProblemes);
+         solutions.setProblemes(problemes);
 
-        try{
+      return   serviceSolutions.creer(solutions,email,mot);
+       /* try{
             Problemes problemes = serviceProbleme.trouverProblemeParId(idProblemes);
             Solutions solutions1 = serviceSolutions.donnerSolutionParProbleme(problemes);
             // Vérifier si le probleme exite déja;
@@ -34,7 +37,8 @@ public class ControllerSolution {
                 // Vérifier si la solution n'existe pas, on l'ajoute;
                 if (solutions1 == null){
                     solutions.setProblemes(problemes); // On mets le probleme dans solution avant de créer;
-                    serviceSolutions.creer(solutions);
+
+                    serviceSolutions.creer(solutions,email,mot);
                     return "Solution ajoutée avec succes !";
                 }else {
                     return "Cette solution existe déjà !";
@@ -42,8 +46,8 @@ public class ControllerSolution {
             }
         } catch (NoSuchElementException e) { // Sinon si le probleme n'existe pas;
             return "Ce problème exite pas !";
-        }
-        return "erreur";
+        }*/
+       // return "erreur";
     }
 
     // Controller qui va afficher toutes les solutions disponible;

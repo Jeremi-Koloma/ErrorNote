@@ -9,7 +9,7 @@ public interface ServiceProbleme {
 
     // Reserver pour l'Admin et le l'Utlisatuer;
     // Une méthode qui va retourner un probleme pour le Creer;
-    Problemes creer(Problemes problemes);
+    Object creer(Problemes problemes,String email,String mot2passe);
 
     // Une méthode qui va retourner une liste de problibleme pour Afficher tous les problemes créer;
     // Reserver pour l'Admin et le Visiteurs;

@@ -69,9 +69,12 @@ public class ServiceUsersImpl implements ServiceUsers{
 
     @Override // implementation de la méthode se loger;
     public Object login(String password, String email) {
-        Users newUser = repositoryUsers.findByEmail(email);
+        Users newUser = new Users();// repositoryUsers.findByEmail(email);
+        newUser=repositoryUsers.login(password,email);
         // faire une correspondance de mots de passe;
-        if (passwordEncoder().matches(password, newUser.getPassword())){
+       // if (passwordEncoder().matches(password, newUser.getPassword()))
+        if (newUser!=null)
+        {
             return "Nom: " + newUser.getNom()+ "" +"\nPrénom: " +newUser.getPrenom() + "\nEmail: " +newUser.getEmail();
         }else {
             return "Mots de passe ou e-mail incorrect !";

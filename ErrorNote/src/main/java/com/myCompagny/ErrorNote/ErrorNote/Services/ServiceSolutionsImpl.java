@@ -2,6 +2,7 @@ package com.myCompagny.ErrorNote.ErrorNote.Services;
 
 import com.myCompagny.ErrorNote.ErrorNote.Modeles.Problemes;
 import com.myCompagny.ErrorNote.ErrorNote.Modeles.Solutions;
+import com.myCompagny.ErrorNote.ErrorNote.Modeles.Users;
 import com.myCompagny.ErrorNote.ErrorNote.Repositorys.RepositorySolutions;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,21 @@ public class ServiceSolutionsImpl implements ServiceSolutions{
     private final RepositorySolutions repositorySolutions;
 
     @Override // Implementation de la méthode qui va créer une Solutions;
-    public Solutions creer(Solutions solutions) { // On retourne repositorySolution.la méthode (save) Pour la persistence des données dans la base de donéé
-        return repositorySolutions.save(solutions);
+    public Object creer(Solutions solutions,String mail, String mot2passe) { // On retourne repositorySolution.la méthode (save) Pour la persistence des données dans la base de donéé
+      Problemes p=new Problemes();
+       p= solutions.getProblemes();
+        Users u=new Users();
+      u= p.getUsers();
+      Solutions k=new Solutions();
+     k= repositorySolutions.findByProblemes(p);
+     if (k==null){
+       if (u.getEmail().equals(mail) && u.getPassword().equals(mot2passe)){
+        return repositorySolutions.save(solutions);}
+       else
+           return "mot de passe ou email incorrect";
+    }
+     else
+         return "ce probleme a deja une solution";
     }
 
     @Override // Implementation de la méthode qui va Afficher la liste de toutes les Solutions proposer;

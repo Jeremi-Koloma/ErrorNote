@@ -1,8 +1,13 @@
 package com.myCompagny.ErrorNote.ErrorNote.Services;
 
 import com.myCompagny.ErrorNote.ErrorNote.Modeles.Problemes;
+import com.myCompagny.ErrorNote.ErrorNote.Modeles.Users;
 import com.myCompagny.ErrorNote.ErrorNote.Repositorys.RepositoryProblemes;
+import com.myCompagny.ErrorNote.ErrorNote.Repositorys.RepositoryUsers;
 import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,13 +17,24 @@ import java.util.List;
 @AllArgsConstructor // Un constructeur avec tous les arguments pour l'injections de notre RepositoryProblemes;
 public class ServiceProblemeImpl implements ServiceProbleme{
     // Ici on implemente les 02 méthodes de l'interface Service;
+    private final RepositoryUsers repositoryUsers;
+
 
     //Injectons notre RepositoryProbleme;
     private final RepositoryProblemes repositoryProblemes;
 
+
     @Override // implementation de la méthode qui va créer un Probleme;
-    public Problemes creer(Problemes problemes) { // On retourne repository.la méthode (save) pour la persistance des données dans la base de donnée;
-        return repositoryProblemes.save(problemes);
+    public Object creer(Problemes problemes,String email,String mot2passe) { // On retourne repository.la méthode (save) pour la persistance des données dans la base de donnée;
+        Users newUser = repositoryUsers.findByEmail(email);
+        // faire une correspondance de mots de passe;
+        if (newUser!=null && newUser.getPassword().equals(mot2passe)){
+            problemes.setUsers(newUser);
+            return repositoryProblemes.save(problemes);
+        }
+        else
+            return "utilisateur introuvable";
+
     }
 
     @Override // Implementation de la méthode qui va Afficher tous les problemes;

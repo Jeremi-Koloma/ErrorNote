@@ -1,5 +1,6 @@
 package com.myCompagny.ErrorNote.ErrorNote.Modeles;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,4 +28,10 @@ public class Commentaires {
     @ManyToOne
     @JoinColumn(name = "idSolutions") // Donner un Nom spécifique à notre Clé Etranger;
     private Solutions solutions;
+
+    public Commentaires(String commentaires, Users users, Solutions solutions) {
+        this.commentaires = commentaires;
+        this.users = users;
+        this.solutions = solutions;
+    }
 }

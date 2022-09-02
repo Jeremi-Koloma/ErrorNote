@@ -14,11 +14,12 @@
 	<name>ErrorNote-app</name>
 	<description>L&apos;application est un outil idéal d’échange d’expériences entre les apprenants</description>
 	<properties>
-		<java.version>18</java.version>
-		<maven.source.compiler>1.18</maven.source.compiler>
-		<maven.source.target>1.18</maven.source.target>
+		<java.version>17</java.version>
+		<maven.source.compiler>1.17</maven.source.compiler>
+		<maven.source.target>1.17</maven.source.target>
 	</properties>
 	<dependencies>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -64,6 +65,11 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-crypto</artifactId>
 			<version>5.7.3</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
 		</dependency>
 
 	</dependencies>
